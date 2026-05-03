@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext } from 'react';
-import axios from 'axios';
+import api from '../api/axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { UploadCloud, ArrowLeft, Send } from 'lucide-react';
@@ -40,7 +40,7 @@ const AddNotice = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/notices', formData, {
+      await api.post('/api/notices', formData, {
         headers: {
           'Authorization': `Bearer ${admin.token}`,
           'Content-Type': 'multipart/form-data'

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api/axios';
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 
 const ChatbotWidget = () => {
@@ -36,7 +36,7 @@ const ChatbotWidget = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/chat', { message: userMsg, studentType });
+      const response = await api.post('/api/chat', { message: userMsg, studentType });
       const replyText = response?.data?.reply || "Sorry, I couldn't understand that properly.";
       setMessages(prev => [...prev, { 
         text: replyText, 

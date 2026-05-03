@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api/axios';
 import { AuthContext } from '../context/AuthContext';
 import { Lock, User, LogIn } from 'lucide-react';
 
@@ -18,7 +18,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+      const res = await api.post('/api/auth/login', { username, password });
       login(res.data.token, res.data.username);
       navigate('/admin');
     } catch (err) {

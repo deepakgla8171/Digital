@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
-import axios from 'axios';
+import api from '../api/axios';
 import toast from 'react-hot-toast';
 
 const Contact = () => {
@@ -14,7 +14,7 @@ const Contact = () => {
     
     try {
       // Send to your backend API first
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await api.post('/api/contact', formData);
       toast.success('Message saved to system!');
       
       // Then re-direct to WhatsApp directly to your number

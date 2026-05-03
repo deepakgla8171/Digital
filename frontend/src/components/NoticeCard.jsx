@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, FileDown, Trash2, Zap, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import api from '../api/axios';
 import { motion } from 'framer-motion';
 
 const NoticeCard = ({ notice, isAdmin, onDelete, index = 0 }) => {
@@ -67,7 +68,7 @@ const NoticeCard = ({ notice, isAdmin, onDelete, index = 0 }) => {
           </span>
           {notice.fileUrl && (
             <a 
-              href={`http://localhost:5000${notice.fileUrl}`} 
+              href={`${api.defaults.baseURL}${notice.fileUrl}`} 
               target="_blank" 
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}

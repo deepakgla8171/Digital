@@ -1,0 +1,33 @@
+services:
+  # Backend API
+  - type: web
+    name: digital-notice-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false # Set this in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GEMINI_API_KEY
+        sync: false # Set this in Render dashboard
+
+  # Frontend Static Site
+  - type: web
+    name: digital-notice-frontend
+    env: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: digital-notice-backend
+          envVarKey: RENDER_EXTERNAL_URL

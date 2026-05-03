@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock, MapPin, X } from 'lucide-react';
-import axios from 'axios';
+import api from '../api/axios';
 import toast from 'react-hot-toast';
 
 const Events = () => {
@@ -37,7 +37,7 @@ const Events = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await axios.post('http://localhost:5000/api/events/register', {
+      await api.post('/api/events/register', {
         eventId: selectedEvent.id.toString(),
         eventName: selectedEvent.title,
         ...formData

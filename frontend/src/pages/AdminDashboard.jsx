@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import api from '../api/axios';
 import { AuthContext } from '../context/AuthContext';
 import NoticeCard from '../components/NoticeCard';
 import { PlusCircle, LogOut, Globe, MessageSquare } from 'lucide-react';
@@ -21,8 +21,8 @@ const AdminDashboard = () => {
     try {
       setLoading(true);
       const [noticesRes, chatsRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/notices'),
-        axios.get('http://localhost:5000/api/chat/history')
+        api.get('/api/notices'),
+        api.get('/api/chat/history')
       ]);
       setNotices(noticesRes.data);
       setChatHistory(chatsRes.data);
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
     if (!window.confirm("Are you sure you want to delete this notice?")) return;
     
     try {
-      await axios.delete(`http://localhost:5000/api/notices/${id}`, {
+      await api.delete(`/api/notices/${id}`, {
         headers: { Authorization: `Bearer ${admin.token}` }
       });
       toast.success("Notice deleted successfully");

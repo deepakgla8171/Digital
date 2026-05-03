@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api/axios';
 import NoticeCard from '../components/NoticeCard';
 import ChatbotWidget from '../components/ChatbotWidget';
 import Footer from '../components/Footer';
@@ -29,7 +29,7 @@ const StudentDashboard = () => {
 
   const fetchNotices = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/notices');
+      const res = await api.get('/api/notices');
       setNotices(res.data);
       setLoading(false);
     } catch (err) {

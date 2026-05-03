@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api/axios';
 import { Mail, KeyRound, ArrowLeft } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -16,7 +16,7 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      const res = await api.post('/api/auth/forgot-password', { email });
       toast.success(res.data.message || 'Password reset link sent to your email');
       // Adding a slight delay before redirecting helps UI feel smoother
       setTimeout(() => navigate('/admin-login'), 3000);

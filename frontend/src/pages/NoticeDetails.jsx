@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api/axios';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, FileDown, User, Tag } from 'lucide-react';
 import toast from 'react-hot-toast';
@@ -12,7 +12,7 @@ const NoticeDetails = () => {
   useEffect(() => {
     const fetchNotice = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/notices/${id}`);
+        const res = await api.get(`/api/notices/${id}`);
         setNotice(res.data);
       } catch (err) {
         console.error("Failed to fetch notice", err);
@@ -120,7 +120,7 @@ const NoticeDetails = () => {
           <div className="px-8 py-6 md:px-10 bg-slate-50 dark:bg-slate-800/80 border-t border-slate-100 dark:border-slate-700">
             <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4">Attachments</h4>
             <a 
-              href={`http://localhost:5000${notice.fileUrl}`} 
+              href={`${api.defaults.baseURL}${notice.fileUrl}`} 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white dark:bg-slate-700 py-3 px-6 rounded-xl border border-slate-200 dark:border-slate-600 text-blue-600 dark:text-blue-400 font-semibold hover:shadow-md hover:bg-slate-50 dark:hover:bg-slate-600 transition-all duration-300"
