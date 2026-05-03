@@ -18,14 +18,19 @@ router.post('/chat', async (req, res) => {
     }
 
     // Fetch the 10 most recent notices to give context to the AI
-    const recentNotices = await Notice.find().sort({ createdAt: -1 }).limit(10);
-    
-    const contextStr = recentNotices.map((n, i) => 
-      `Notice ${i+1}:
+    let recentNotices = [];
+    let contextStr = "Database currently unavailable.";
+    try {
+      recentNotices = await Notice.find().sort({ createdAt: -1 }).limit(10);
+      contextStr = recentNotices.map((n, i) => 
+        `Notice ${i+1}:
 Title: ${n.title}
 Category: ${n.category}
 Summary: ${n.aiSummary || n.content.substring(0, 100)}`
-    ).join("\n\n");
+      ).join("\n\n");
+    } catch (dbErr) {
+      console.error("Warning: Could not fetch notices for AI context.");
+    }
 
     const systemPrompt = `You are a helpful student assistant for a college digital notice board.
 Answer the student's query clearly and concisely based on the following recent notices.

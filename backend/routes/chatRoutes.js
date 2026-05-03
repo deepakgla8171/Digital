@@ -15,11 +15,17 @@ router.post('/', async (req, res) => {
     }
 
     // Fetch context from DB so the AI knows what's going on.
-    const recentNotices = await Notice.find().sort({ createdAt: -1 }).limit(5);
+    let recentNotices = [];
     let noticesData = "Here are the latest college notices:\\n";
-    recentNotices.forEach((n, idx) => {
-      noticesData += `${idx + 1}. Title: ${n.title}, Category: ${n.category}, Content: ${n.content}\\n`;
-    });
+    try {
+      recentNotices = await Notice.find().sort({ createdAt: -1 }).limit(5);
+      recentNotices.forEach((n, idx) => {
+        noticesData += `${idx + 1}. Title: ${n.title}, Category: ${n.category}, Content: ${n.content}\\n`;
+      });
+    } catch (dbErr) {
+      console.error("Warning: Could not fetch notices for AI context. Proceeding without context.");
+      noticesData = "Database currently unavailable. No recent notices loaded.\\n";
+    }
 
     const prompt = `You are a helpful and polite "AI Notice Assistant" for a college digital notice board.
 The student asking this is a "${studentType}" student. Take their student type into account to provide a more personalized answer.
