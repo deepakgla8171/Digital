@@ -26,7 +26,7 @@ router.post('/chat', async (req, res) => {
         `Notice ${i+1}:
 Title: ${n.title}
 Category: ${n.category}
-Summary: ${n.aiSummary || n.content.substring(0, 100)}`
+Summary: ${n.aiSummary || (n.content ? n.content.substring(0, 100) : '')}`
       ).join("\n\n");
     } catch (dbErr) {
       console.error("Warning: Could not fetch notices for AI context.");

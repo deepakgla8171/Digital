@@ -80,7 +80,7 @@ Answer the student's question based on the context above. If the context doesn't
         });
         
         if (foundNotice && lowercaseMsg.length > 3) {
-          finalReply = `Based on your question, here's what I found: ${foundNotice.title}. ${foundNotice.aiSummary || foundNotice.content.substring(0, 80)}... Let me know if you need more details!`;
+          finalReply = `Based on your question, here's what I found: ${foundNotice.title}. ${foundNotice.aiSummary || (foundNotice.content ? foundNotice.content.substring(0, 80) : '')}... Let me know if you need more details!`;
         } else {
           // Generic fallback that sounds AI-like
           const genericResponses = [

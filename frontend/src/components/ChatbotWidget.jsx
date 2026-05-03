@@ -44,8 +44,11 @@ const ChatbotWidget = () => {
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }]);
     } catch (error) {
+      const errorMsg = !error.response 
+        ? "Backend server is unreachable. Please ensure it is running."
+        : "Server error, please try again later";
       setMessages(prev => [...prev, { 
-        text: "Server error, please try again later", 
+        text: errorMsg, 
         isBot: true,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }]);
