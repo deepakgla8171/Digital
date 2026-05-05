@@ -12,4 +12,3 @@ const noticeSchema = new mongoose.Schema({
     aiSummary: { type: String }, // AI generated summary
 }, { timestamps: true });
 
-module.exports = mongoose.model('Notice', noticeSchema);
