@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Globe, Link as LinkIcon, Share2 } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const containerVariants = {
