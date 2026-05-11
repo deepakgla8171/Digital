@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Globe, Link as LinkIcon, Share2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+
 
 const Footer = () => {
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
-      opacity: 1, 
+      opacity: 1,
       y: 0,
       transition: { duration: 0.8, staggerChildren: 0.2 }
     }
@@ -35,7 +35,7 @@ const Footer = () => {
       <div className="absolute top-0 right-0 w-80 h-80 bg-college-secondary/40 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-blob"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-college-primary/40 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-blob" style={{ animationDelay: '2s' }}></div>
 
-      <motion.div 
+      <motion.div
         className="container mx-auto px-6 relative z-10"
         variants={containerVariants}
         initial="hidden"
@@ -68,8 +68,8 @@ const Footer = () => {
                 { name: 'Admin Portal', path: '/admin-login' }
               ].map((link, idx) => (
                 <li key={idx}>
-                  <Link 
-                    to={link.path} 
+                  <Link
+                    to={link.path}
                     className="text-college-accent/80 hover:text-college-light transition-all duration-300 flex items-center gap-3 group font-medium"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-college-secondary group-hover:bg-college-light group-hover:scale-150 transition-all duration-300 shadow-[0_0_8px_rgba(218,241,222,0)] group-hover:shadow-[0_0_8px_rgba(218,241,222,0.8)]"></span>
@@ -85,7 +85,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold text-college-light tracking-wide border-b border-college-accent/20 pb-2 inline-block">Connect With Us</h3>
             <div className="flex gap-4 pt-2">
               {socialLinks.map((social, idx) => (
-                <motion.a 
+                <motion.a
                   key={idx}
                   href={social.href}
                   whileHover={{ scale: 1.15, y: -5, backgroundColor: "#163832" }}
@@ -96,13 +96,13 @@ const Footer = () => {
                 </motion.a>
               ))}
             </div>
-            
+
             <div className="mt-8 p-5 rounded-2xl bg-college-primary/20 border border-college-accent/10 backdrop-blur-sm shadow-inner">
               <p className="text-sm text-college-light font-semibold mb-3">Subscribe to Campus Pulse</p>
               <div className="flex relative">
-                <input 
-                  type="email" 
-                  placeholder="Student email..." 
+                <input
+                  type="email"
+                  placeholder="Student email..."
                   className="bg-college-dark/60 text-white text-sm rounded-xl px-4 py-3 w-full outline-none focus:ring-2 focus:ring-college-accent border border-college-accent/20 transition-all placeholder:text-college-accent/40 pr-24"
                 />
                 <button className="absolute right-1 top-1 bottom-1 bg-college-secondary hover:bg-college-accent text-white px-4 rounded-lg transition-colors text-sm font-bold shadow-md hover:text-college-dark">
@@ -114,8 +114,8 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <motion.div 
-          variants={itemVariants} 
+        <motion.div
+          variants={itemVariants}
           className="mt-16 pt-8 border-t border-college-accent/10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-college-accent/60 font-medium"
         >
           <p>&copy; {new Date().getFullYear()} MVD University. All rights reserved.</p>
