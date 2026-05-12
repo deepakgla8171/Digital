@@ -4,10 +4,7 @@ import { Mail, Globe, Link as LinkIcon, Share2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-};
+
 
 
 const socialLinks = [
