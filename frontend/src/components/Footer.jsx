@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 
 
-
-
 const socialLinks = [
   { icon: <Globe size={20} />, href: '#' },
   { icon: <Share2 size={20} />, href: '#' },
