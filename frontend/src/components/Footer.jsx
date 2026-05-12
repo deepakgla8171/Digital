@@ -3,15 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Globe, Link as LinkIcon, Share2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const Footer = () => {
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, staggerChildren: 0.2 }
-    }
-  };
+
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
