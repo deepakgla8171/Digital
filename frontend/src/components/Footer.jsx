@@ -5,12 +5,6 @@ import { Link } from 'react-router-dom';
 
 
 
-const socialLinks = [
-  { icon: <Globe size={20} />, href: '#' },
-  { icon: <Share2 size={20} />, href: '#' },
-  { icon: <LinkIcon size={20} />, href: '#' },
-  { icon: <Mail size={20} />, href: 'mailto:deepakgla8171@gmail.com' },
-];
 
 return (
   <footer className="relative mt-20 pt-16 pb-8 overflow-hidden border-t border-college-accent/10">
