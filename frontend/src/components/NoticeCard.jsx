@@ -5,7 +5,14 @@ import api from '../api/axios';
 import { motion } from 'framer-motion';
 
 const NoticeCard = ({ notice, isAdmin, onDelete, index = 0 }) => {
-
+  const getCategoryTheme = (category) => {
+    switch (category) {
+      case 'Exam': return { bg: 'bg-[#163832]', text: 'text-[#DAF1DE]', border: 'border-[#235347]/40' };
+      case 'Placement': return { bg: 'bg-[#235347]', text: 'text-[#051F20]', border: 'border-[#163832]/40' };
+      case 'Event': return { bg: 'bg-[#8EB69B]', text: 'text-[#051F20]', border: 'border-[#163832]/30' };
+      default: return { bg: 'bg-[#DAF1DE]/20 dark:bg-[#163832]/30', text: 'text-[#163832] dark:text-[#8EB69B]', border: 'border-[#8EB69B]/50' };
+    }
+  };
 
   const theme = getCategoryTheme(notice.category);
 
