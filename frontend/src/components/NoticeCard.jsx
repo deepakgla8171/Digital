@@ -5,14 +5,7 @@ import api from '../api/axios';
 import { motion } from 'framer-motion';
 
 const NoticeCard = ({ notice, isAdmin, onDelete, index = 0 }) => {
-  const getCategoryTheme = (category) => {
-    switch (category) {
-      case 'Exam': return { bg: 'bg-[#163832]', text: 'text-[#DAF1DE]', border: 'border-[#235347]/40' };
-      case 'Placement': return { bg: 'bg-[#235347]', text: 'text-[#051F20]', border: 'border-[#163832]/40' };
-      case 'Event': return { bg: 'bg-[#8EB69B]', text: 'text-[#051F20]', border: 'border-[#163832]/30' };
-      default: return { bg: 'bg-[#DAF1DE]/20 dark:bg-[#163832]/30', text: 'text-[#163832] dark:text-[#8EB69B]', border: 'border-[#8EB69B]/50' };
-    }
-  };
+
 
   const theme = getCategoryTheme(notice.category);
 
@@ -23,7 +16,7 @@ const NoticeCard = ({ notice, isAdmin, onDelete, index = 0 }) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
@@ -41,13 +34,13 @@ const NoticeCard = ({ notice, isAdmin, onDelete, index = 0 }) => {
             {notice.category}
           </span>
         </div>
-        
+
         <p className="text-[#163832]/80 dark:text-[#DAF1DE]/70 mb-6 line-clamp-3 flex-grow font-medium text-[15px] leading-relaxed">
           {notice.content}
         </p>
-        
+
         {notice.aiSummary && notice.aiSummary !== "No summary available." && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0.8 }}
             whileHover={{ opacity: 1, scale: 1.02 }}
             className="bg-gradient-to-r from-[#163832] to-[#235347] rounded-2xl p-5 mt-auto relative overflow-hidden shadow-lg"
@@ -67,9 +60,9 @@ const NoticeCard = ({ notice, isAdmin, onDelete, index = 0 }) => {
             <Calendar size={18} /> {formatDate(notice.createdAt)}
           </span>
           {notice.fileUrl && (
-            <a 
-              href={`${api.defaults.baseURL}${notice.fileUrl}`} 
-              target="_blank" 
+            <a
+              href={`${api.defaults.baseURL}${notice.fileUrl}`}
+              target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
               className="flex items-center gap-2 text-white bg-[#163832] hover:bg-[#235347] px-4 py-2 rounded-xl transition-all font-bold shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
@@ -78,14 +71,14 @@ const NoticeCard = ({ notice, isAdmin, onDelete, index = 0 }) => {
             </a>
           )}
         </div>
-        
+
         <div className="flex items-center gap-4">
           <Link to={`/notice/${notice._id}`} className="hidden md:flex items-center gap-2 font-bold text-[#235347] hover:text-[#163832] dark:hover:text-[#DAF1DE] transition-colors group-hover:translate-x-2 duration-300">
             Read More <ArrowRight size={16} />
           </Link>
 
           {isAdmin && (
-            <button 
+            <button
               onClick={(e) => {
                 e.preventDefault();
                 onDelete(notice._id);
