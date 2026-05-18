@@ -1,7 +1,8 @@
 import React from 'react';
 import { Calendar, FileDown, Trash2, Zap, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
+import api from '../api/axios';
+import { motion } from 'framer-motion';
 
 const NoticeCard = ({ notice, isAdmin, onDelete, index = 0 }) => {
   const getCategoryTheme = (category) => {
