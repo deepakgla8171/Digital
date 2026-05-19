@@ -14,7 +14,7 @@ const NoticeCard = ({ notice, isAdmin, onDelete, index = 0 }) => {
     }
   };
 
-  const theme = getCategoryTheme(notice.category);
+
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
