@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import { Mail, Globe, Link as LinkIcon, Share2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+
 const socialLinks = [
   { icon: <Globe size={20} />, href: '#' },
   { icon: <Share2 size={20} />, href: '#' },
   { icon: <LinkIcon size={20} />, href: '#' },
   { icon: <Mail size={20} />, href: 'mailto:deepakgla8171@gmail.com' },
 ];
-
 
 
 return (
