@@ -9,7 +9,7 @@ const noticeRoutes = require("./routes/noticeRoutes");
 const aiRoutes = require("./routes/aiRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const contactRoutes = require("./routes/contactRoutes");
-
+const eventRoutes = require("./routes/eventRoutes");
 
 
 const app = express();
